@@ -16,13 +16,15 @@ export class ReservationService {
             asiento_id: asientoId,
             total: total
         };
-        return this.http.post<ReservaResponse>(`${this.apiUrl}/reservas/cine`, reserva, {
+        // ✅ CORREGIDO: añadido /api/ antes de reservas/cine
+        return this.http.post<ReservaResponse>(`${this.apiUrl}/api/reservas/cine`, reserva, {
             headers: { Authorization: `Bearer ${this.auth.getToken()}` }
         });
     }
 
     getMisReservas() {
-        return this.http.get<ReservaCine[]>(`${this.apiUrl}/reservas/mis-reservas`, {
+        // ✅ CORREGIDO: añadido /api/ antes de reservas/mis-reservas
+        return this.http.get<ReservaCine[]>(`${this.apiUrl}/api/reservas/mis-reservas`, {
             headers: { Authorization: `Bearer ${this.auth.getToken()}` }
         });
     }

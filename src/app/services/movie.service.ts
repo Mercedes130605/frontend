@@ -12,44 +12,52 @@ export class MovieService {
 
     // Películas
     getPeliculas() {
-        return this.http.get<Pelicula[]>(`${this.apiUrl}/peliculas`);
+        // ✅ CORREGIDO: añadido /api/ antes de peliculas
+        return this.http.get<Pelicula[]>(`${this.apiUrl}/api/peliculas`);
     }
 
     getPelicula(id: number) {
-        return this.http.get<Pelicula>(`${this.apiUrl}/peliculas/${id}`);
+        // ✅ CORREGIDO: añadido /api/ antes de peliculas
+        return this.http.get<Pelicula>(`${this.apiUrl}/api/peliculas/${id}`);
     }
 
     crearPelicula(pelicula: PeliculaRequest) {
-        return this.http.post(`${this.apiUrl}/peliculas`, pelicula, {
+        // ✅ CORREGIDO: añadido /api/ antes de peliculas
+        return this.http.post(`${this.apiUrl}/api/peliculas`, pelicula, {
             headers: { Authorization: `Bearer ${this.auth.getToken()}` }
         });
     }
 
     actualizarPelicula(id: number, pelicula: PeliculaRequest) {
-        return this.http.put(`${this.apiUrl}/peliculas/${id}`, pelicula, {
+        // ✅ CORREGIDO: añadido /api/ antes de peliculas
+        return this.http.put(`${this.apiUrl}/api/peliculas/${id}`, pelicula, {
             headers: { Authorization: `Bearer ${this.auth.getToken()}` }
         });
     }
 
     eliminarPelicula(id: number) {
-        return this.http.delete(`${this.apiUrl}/peliculas/${id}`, {
+        // ✅ CORREGIDO: añadido /api/ antes de peliculas
+        return this.http.delete(`${this.apiUrl}/api/peliculas/${id}`, {
             headers: { Authorization: `Bearer ${this.auth.getToken()}` }
         });
     }
 
     // Horarios
     getHorarios(peliculaId: number) {
-        return this.http.get<Horario[]>(`${this.apiUrl}/horarios/pelicula/${peliculaId}`);
+        // ✅ CORREGIDO: añadido /api/ antes de horarios/pelicula
+        return this.http.get<Horario[]>(`${this.apiUrl}/api/horarios/pelicula/${peliculaId}`);
     }
 
     crearHorario(horario: HorarioRequest) {
-        return this.http.post(`${this.apiUrl}/horarios`, horario, {
+        // ✅ CORREGIDO: añadido /api/ antes de horarios
+        return this.http.post(`${this.apiUrl}/api/horarios`, horario, {
             headers: { Authorization: `Bearer ${this.auth.getToken()}` }
         });
     }
 
     // Asientos
     getAsientos(horarioId: number) {
-        return this.http.get<Asiento[]>(`${this.apiUrl}/asientos/horario/${horarioId}`);
+        // ✅ CORREGIDO: añadido /api/ antes de asientos/horario
+        return this.http.get<Asiento[]>(`${this.apiUrl}/api/asientos/horario/${horarioId}`);
     }
 }

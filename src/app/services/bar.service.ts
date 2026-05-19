@@ -12,23 +12,27 @@ export class BarService {
 
     // Productos
     getProductos() {
-        return this.http.get<Producto[]>(`${this.apiUrl}/productos`);
+        // ✅ CORREGIDO: añadido /api/ antes de productos
+        return this.http.get<Producto[]>(`${this.apiUrl}/api/productos`);
     }
 
     crearProducto(producto: ProductoRequest) {
-        return this.http.post(`${this.apiUrl}/productos`, producto, {
+        // ✅ CORREGIDO: añadido /api/ antes de productos
+        return this.http.post(`${this.apiUrl}/api/productos`, producto, {
             headers: { Authorization: `Bearer ${this.auth.getToken()}` }
         });
     }
 
     actualizarProducto(id: number, producto: Partial<ProductoRequest>) {
-        return this.http.put(`${this.apiUrl}/productos/${id}`, producto, {
+        // ✅ CORREGIDO: añadido /api/ antes de productos
+        return this.http.put(`${this.apiUrl}/api/productos/${id}`, producto, {
             headers: { Authorization: `Bearer ${this.auth.getToken()}` }
         });
     }
 
     eliminarProducto(id: number) {
-        return this.http.delete(`${this.apiUrl}/productos/${id}`, {
+        // ✅ CORREGIDO: añadido /api/ antes de productos
+        return this.http.delete(`${this.apiUrl}/api/productos/${id}`, {
             headers: { Authorization: `Bearer ${this.auth.getToken()}` }
         });
     }
@@ -39,13 +43,15 @@ export class BarService {
             productos: productos,
             total: total
         };
-        return this.http.post<PedidoResponse>(`${this.apiUrl}/pedidos/bar`, pedido, {
+        // ✅ CORREGIDO: añadido /api/ antes de pedidos/bar
+        return this.http.post<PedidoResponse>(`${this.apiUrl}/api/pedidos/bar`, pedido, {
             headers: { Authorization: `Bearer ${this.auth.getToken()}` }
         });
     }
 
     getMisPedidos() {
-        return this.http.get<PedidoBar[]>(`${this.apiUrl}/pedidos/mis-pedidos`, {
+        // ✅ CORREGIDO: añadido /api/ antes de pedidos/mis-pedidos
+        return this.http.get<PedidoBar[]>(`${this.apiUrl}/api/pedidos/mis-pedidos`, {
             headers: { Authorization: `Bearer ${this.auth.getToken()}` }
         });
     }

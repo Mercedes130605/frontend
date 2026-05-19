@@ -36,12 +36,14 @@ export class AuthService {
         }
     }
 
+    // ✅ CORREGIDO: añadido /api/ antes de auth/login
     login(email: string, password: string) {
-        return this.http.post<LoginResponse>(`${this.apiUrl}/auth/login`, { email, password });
+        return this.http.post<LoginResponse>(`${this.apiUrl}/api/auth/login`, { email, password });
     }
 
+    // ✅ CORREGIDO: añadido /api/ antes de auth/register
     register(nombre: string, email: string, password: string) {
-        return this.http.post(`${this.apiUrl}/auth/register`, { nombre, email, password });
+        return this.http.post(`${this.apiUrl}/api/auth/register`, { nombre, email, password });
     }
 
     setSesion(token: string, usuario: Usuario) {
