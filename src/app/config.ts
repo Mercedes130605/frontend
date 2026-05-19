@@ -3,7 +3,7 @@ export interface AppConfig {
 }
 
 export let config: AppConfig = {
-  apiUrl: 'https://cine-backend-i21f.onrender.com/api'
+  apiUrl: 'https://cine-backend-i21f.onrender.com'
 };
 
 export function loadConfig(): Promise<void> {
