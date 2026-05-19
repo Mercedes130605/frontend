@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="es">
+
 <head>
     <meta charset="utf-8">
     <title>CineApp - Reserva de entradas y snacks</title>
@@ -9,7 +10,13 @@
     <meta name="description" content="Aplicación para reservar entradas de cine y comprar snacks">
     <meta name="theme-color" content="#667eea">
 </head>
+
 <body>
+    <script>
+        window.env = window.env || {};
+        window.env.API_URL = '%%API_URL%%';
+    </script>
     <app-root></app-root>
 </body>
+
 </html>

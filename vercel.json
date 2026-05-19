@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/" }
+  ],
+  "env": {
+    "API_URL": "https://cine-backend-i21f.onrender.com"
+  }
+}
