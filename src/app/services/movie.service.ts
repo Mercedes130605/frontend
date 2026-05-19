@@ -2,12 +2,13 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { Pelicula, PeliculaRequest, Horario, HorarioRequest, Asiento } from '../models/models';
+import { config } from '../config';
 
 @Injectable({ providedIn: 'root' })
 export class MovieService {
     private http = inject(HttpClient);
     private auth = inject(AuthService);
-    private apiUrl = 'http://localhost:3000/api';
+    private apiUrl = 'config.apiUrl';
 
     // Películas
     getPeliculas() {

@@ -2,12 +2,13 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { ReservaRequest, ReservaResponse, ReservaCine } from '../models/models';
+import { config } from '../config';
 
 @Injectable({ providedIn: 'root' })
 export class ReservationService {
     private http = inject(HttpClient);
     private auth = inject(AuthService);
-    private apiUrl = 'http://localhost:3000/api';
+    private apiUrl = 'config.apiUrl';
 
     crearReserva(horarioId: number, asientoId: number, total: number) {
         const reserva: ReservaRequest = {

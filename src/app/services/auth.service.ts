@@ -2,12 +2,13 @@ import { Injectable, signal, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Usuario, LoginResponse } from '../models/models';
+import { config } from '../config';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
     private http = inject(HttpClient);
     private router = inject(Router);
-    private apiUrl = 'http://localhost:3000/api';
+    private apiUrl = 'config.apiUrl';
     private tokenKey = 'auth_token';
     
     usuarioActual = signal<Usuario | null>(null);

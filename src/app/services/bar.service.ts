@@ -2,12 +2,13 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { Producto, ProductoRequest, PedidoRequest, PedidoResponse, PedidoBar } from '../models/models';
+import { config } from '../config';
 
 @Injectable({ providedIn: 'root' })
 export class BarService {
     private http = inject(HttpClient);
     private auth = inject(AuthService);
-    private apiUrl = 'http://localhost:3000/api';
+    private apiUrl = 'config.apiUrl';
 
     // Productos
     getProductos() {
