@@ -1,0 +1,13 @@
+<app-loading />
+
+@if (mostrarHeaderFooter) {
+    <app-header />
+}
+
+<main class="main-content">
+    <router-outlet />
+</main>
+
+@if (mostrarHeaderFooter) {
+    <app-footer />
+}

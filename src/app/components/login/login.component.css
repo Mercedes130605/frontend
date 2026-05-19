@@ -1,0 +1,138 @@
+/* Estilos personalizados que complementan Bootstrap */
+
+.login-card {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.logo span {
+    font-weight: bold;
+}
+
+/* Personalización de inputs */
+.form-control:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+}
+
+/* Personalización del botón primario */
+.btn-primary {
+    background-color: #667eea;
+    border-color: #667eea;
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #5a67d8;
+    border-color: #5a67d8;
+    transform: translateY(-2px);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* Estilo para el alert de error */
+.alert-danger {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+    font-size: 0.875rem;
+}
+
+/* Test users box */
+.test-users {
+    border-radius: 12px;
+    border-left: 3px solid #667eea;
+}
+
+.test-users p {
+    font-size: 0.75rem;
+    color: #555;
+}
+
+/* Animación de entrada */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+/* Móviles pequeños */
+@media (max-width: 576px) {
+    .login-card {
+        margin: 1rem;
+        padding: 1.5rem !important;
+    }
+    
+    .logo span {
+        font-size: 1.8rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .form-control-lg {
+        font-size: 0.9rem;
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .btn-lg {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+    
+    .test-users {
+        padding: 0.75rem !important;
+    }
+    
+    .test-users p {
+        font-size: 0.7rem;
+    }
+}
+
+/* Tablets */
+@media (min-width: 577px) and (max-width: 768px) {
+    .login-card {
+        margin: 1rem;
+        padding: 2rem !important;
+    }
+    
+    .logo span {
+        font-size: 2rem;
+    }
+}
+
+/* Pantallas grandes */
+@media (min-width: 769px) {
+    .login-card {
+        padding: 2.5rem !important;
+    }
+}
+
+/* Para impresión */
+@media print {
+    .login-container {
+        background: white !important;
+    }
+    
+    .login-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+    
+    .btn-primary,
+    .test-users {
+        display: none;
+    }
+}

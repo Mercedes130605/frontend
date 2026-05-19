@@ -1,0 +1,115 @@
+<div class="profile-container d-flex justify-content-center align-items-center min-vh-100 p-3"
+     style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+    
+    <!-- PERFIL NORMAL -->
+    @if (!editando && !editandoTarjeta) {
+        <div class="profile-card bg-white rounded-4 shadow-lg p-4 p-md-5" style="max-width: 500px; width: 100%;">
+            <div class="avatar text-center display-1 mb-3">👤</div>
+            <h2 class="text-center h3 mb-2">{{auth.usuarioActual()?.nombre}}</h2>
+            <p class="text-center text-secondary mb-2">{{auth.usuarioActual()?.email}}</p>
+            <p class="rol text-center text-primary fw-bold mb-4">
+                Rol: {{auth.usuarioActual()?.rol === 'admin' ? 'Administrador' : 'Cliente'}}
+            </p>
+            
+            <!-- SECCIÓN TARJETA -->
+            <div class="tarjeta-section bg-light p-3 rounded-3 mb-4">
+                <h3 class="fs-6 fw-bold mb-2">💳 Mi Tarjeta</h3>
+                
+                @if (tarjetaInfo.numero_tarjeta) {
+                    <div class="tarjeta-info">
+                        <p class="mb-1 small">Número: **** {{tarjetaInfo.numero_tarjeta.slice(-4)}}</p>
+                        <p class="mb-0 small">Saldo disponible: S/ {{tarjetaInfo.saldo}}</p>
+                    </div>
+                } @else {
+                    <p class="sin-tarjeta text-secondary fst-italic small mb-0">No tienes tarjeta registrada</p>
+                }
+                
+                <div class="recarga-box d-flex gap-2 my-3">
+                    <input type="number" [(ngModel)]="recargaMonto" placeholder="Monto a recargar" 
+                           class="form-control form-control-sm">
+                    <button (click)="recargarSaldo()" class="btn btn-warning btn-sm">➕ Recargar saldo</button>
+                </div>
+                
+                <button (click)="activarEdicionTarjeta()" class="btn btn-info btn-sm w-100">✏️ Editar tarjeta</button>
+            </div>
+            
+            <div class="profile-buttons d-flex gap-3 mt-3">
+                <button (click)="activarEdicion()" class="btn btn-primary flex-grow-1">✏️ Editar perfil</button>
+                <a routerLink="/movies" class="btn btn-secondary flex-grow-1 text-center text-decoration-none">Volver</a>
+            </div>
+            
+            @if (mensaje) {
+                <div class="success alert alert-success mt-3 py-2 text-center small">{{mensaje}}</div>
+            }
+            @if (error) {
+                <div class="error alert alert-danger mt-3 py-2 text-center small">{{error}}</div>
+            }
+        </div>
+    }
+
+    <!-- FORMULARIO EDITAR PERFIL -->
+    @if (editando) {
+        <div class="profile-card bg-white rounded-4 shadow-lg p-4 p-md-5" style="max-width: 500px; width: 100%;">
+            <div class="avatar text-center display-1 mb-3">✏️</div>
+            <h2 class="text-center h3 mb-4">Editar perfil</h2>
+            
+            <div class="form-group mb-3">
+                <label class="form-label fw-semibold small">Nombre</label>
+                <input type="text" [(ngModel)]="usuarioEdit.nombre" class="form-control">
+            </div>
+            
+            <div class="form-group mb-3">
+                <label class="form-label fw-semibold small">Email</label>
+                <input type="email" [(ngModel)]="usuarioEdit.email" class="form-control">
+            </div>
+            
+            <div class="form-group mb-3">
+                <label class="form-label fw-semibold small">Nueva contraseña (opcional)</label>
+                <input type="password" [(ngModel)]="usuarioEdit.password" class="form-control" 
+                       placeholder="Dejar en blanco para no cambiar">
+            </div>
+            
+            <div class="form-group mb-3">
+                <label class="form-label fw-semibold small">Confirmar contraseña</label>
+                <input type="password" [(ngModel)]="usuarioEdit.confirmPassword" class="form-control">
+            </div>
+            
+            @if (error) {
+                <div class="alert alert-danger py-2 text-center small">{{error}}</div>
+            }
+            
+            <div class="profile-buttons d-flex gap-3 mt-3">
+                <button (click)="guardarCambios()" class="btn btn-success flex-grow-1">💾 Guardar</button>
+                <button (click)="cancelarEdicion()" class="btn btn-secondary flex-grow-1">❌ Cancelar</button>
+            </div>
+        </div>
+    }
+
+    <!-- FORMULARIO EDITAR TARJETA -->
+    @if (editandoTarjeta) {
+        <div class="profile-card bg-white rounded-4 shadow-lg p-4 p-md-5" style="max-width: 500px; width: 100%;">
+            <div class="avatar text-center display-1 mb-3">💳</div>
+            <h2 class="text-center h3 mb-4">Editar Tarjeta</h2>
+            
+            <div class="form-group mb-3">
+                <label class="form-label fw-semibold small">Número de tarjeta</label>
+                <input type="text" [(ngModel)]="nuevaTarjeta.numero_tarjeta" 
+                       placeholder="16 dígitos" maxlength="19" class="form-control">
+            </div>
+            
+            <div class="form-group mb-3">
+                <label class="form-label fw-semibold small">Saldo inicial</label>
+                <input type="number" [(ngModel)]="nuevaTarjeta.saldo" placeholder="0.00" class="form-control">
+            </div>
+            
+            @if (error) {
+                <div class="alert alert-danger py-2 text-center small">{{error}}</div>
+            }
+            
+            <div class="profile-buttons d-flex gap-3 mt-3">
+                <button (click)="guardarTarjeta()" class="btn btn-success flex-grow-1">💾 Guardar tarjeta</button>
+                <button (click)="editandoTarjeta = false" class="btn btn-secondary flex-grow-1">❌ Cancelar</button>
+            </div>
+        </div>
+    }
+</div>

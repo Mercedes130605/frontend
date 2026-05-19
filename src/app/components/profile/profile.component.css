@@ -1,0 +1,202 @@
+/* Estilos personalizados que complementan Bootstrap */
+
+/* Tarjeta de perfil */
+.profile-card {
+    animation: fadeInUp 0.4s ease-out;
+}
+
+/* Avatar */
+.avatar {
+    font-size: 3rem;
+}
+
+/* Rol */
+.rol {
+    font-weight: 500;
+}
+
+/* Sección tarjeta */
+.tarjeta-section {
+    background: #f8f9fa;
+    border-radius: 12px;
+}
+
+.tarjeta-section h3 {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.tarjeta-info p {
+    font-size: 0.85rem;
+    margin-bottom: 0.25rem;
+}
+
+.sin-tarjeta {
+    font-size: 0.8rem;
+    font-style: italic;
+    color: #6c757d;
+}
+
+/* Botón recargar */
+.btn-warning {
+    background-color: #f39c12;
+    border-color: #f39c12;
+    color: white;
+}
+
+.btn-warning:hover {
+    background-color: #e67e22;
+    border-color: #e67e22;
+    color: white;
+}
+
+/* Botón editar tarjeta */
+.btn-info {
+    background-color: #3498db;
+    border-color: #3498db;
+    color: white;
+}
+
+.btn-info:hover {
+    background-color: #2980b9;
+    border-color: #2980b9;
+    color: white;
+}
+
+/* Botones de perfil */
+.btn-primary {
+    background-color: #667eea;
+    border-color: #667eea;
+}
+
+.btn-primary:hover {
+    background-color: #5a67d8;
+    border-color: #5a67d8;
+}
+
+.btn-success {
+    background-color: #27ae60;
+    border-color: #27ae60;
+}
+
+.btn-success:hover {
+    background-color: #219a52;
+    border-color: #219a52;
+}
+
+/* Alertas */
+.alert-success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+/* Labels de formularios */
+.form-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: #495057;
+}
+
+/* Inputs */
+.form-control:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+}
+
+/* ============================================
+   ANIMACIONES
+   ============================================ */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+/* Móviles pequeños */
+@media (max-width: 576px) {
+    .profile-container {
+        padding: 1rem !important;
+    }
+    
+    .profile-card {
+        padding: 1.25rem !important;
+    }
+    
+    .avatar {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    h2 {
+        font-size: 1.3rem !important;
+    }
+    
+    .rol {
+        font-size: 0.8rem;
+        margin-bottom: 1rem !important;
+    }
+    
+    .tarjeta-section {
+        padding: 0.75rem !important;
+    }
+    
+    .recarga-box {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .profile-buttons {
+        flex-direction: column;
+        gap: 0.5rem !important;
+    }
+    
+    .btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+    
+    .alert {
+        font-size: 0.75rem;
+        padding: 0.4rem !important;
+    }
+}
+
+/* Tablets */
+@media (min-width: 577px) and (max-width: 768px) {
+    .profile-card {
+        padding: 1.5rem !important;
+    }
+    
+    .avatar {
+        font-size: 2.8rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem !important;
+    }
+}
+
+/* Animación de carga */
+@media (prefers-reduced-motion: reduce) {
+    .profile-card {
+        animation: none;
+    }
+}

@@ -1,0 +1,173 @@
+/* Estilos personalizados que complementan Bootstrap */
+
+.seat-container {
+    background: #f5f5f5;
+    min-height: 100vh;
+}
+
+/* Pantalla */
+.screen {
+    background: #1a1a2e;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Mapa de asientos */
+.seats-map {
+    overflow-x: auto;
+}
+
+/* Estilos de asientos */
+.seat {
+    background: #27ae60;
+    color: white;
+    transition: all 0.3s;
+}
+
+.seat:hover:not(.ocupado) {
+    background: #2ecc71;
+    transform: scale(1.05);
+}
+
+.seat.ocupado {
+    background: #e74c3c !important;
+    cursor: not-allowed;
+    opacity: 0.6;
+    transform: none;
+}
+
+.seat.seleccionado {
+    background: #f39c12 !important;
+    box-shadow: 0 0 10px rgba(243, 156, 18, 0.5);
+    transform: scale(1.02);
+}
+
+/* Leyenda */
+.legend-item span {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Etiquetas de asientos seleccionados */
+.asiento-tag {
+    background: #f39c12;
+    font-size: 0.8rem;
+}
+
+/* Botón agregar al carrito */
+.btn-success {
+    background-color: #27ae60;
+    border-color: #27ae60;
+    transition: all 0.3s;
+}
+
+.btn-success:hover {
+    background-color: #219a52;
+    border-color: #219a52;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(39, 174, 96, 0.4);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+/* Móviles pequeños */
+@media (max-width: 576px) {
+    .seat-container {
+        padding: 1rem !important;
+    }
+    
+    .info-pelicula h2 {
+        font-size: 1rem !important;
+    }
+    
+    .info-pelicula p {
+        font-size: 0.75rem;
+    }
+    
+    .screen {
+        padding: 0.75rem !important;
+        font-size: 0.9rem;
+    }
+    
+    .seats-map {
+        padding: 1rem !important;
+    }
+    
+    .row-label {
+        font-size: 0.9rem;
+        width: 35px !important;
+    }
+    
+    .seat {
+        width: 35px !important;
+        height: 35px !important;
+        font-size: 10px !important;
+    }
+    
+    .seats {
+        gap: 0.3rem !important;
+    }
+    
+    .legend {
+        gap: 1rem !important;
+        flex-wrap: wrap;
+    }
+    
+    .legend-item span {
+        font-size: 0.75rem;
+    }
+    
+    .seat-demo {
+        width: 25px !important;
+        height: 25px !important;
+    }
+    
+    .resumen {
+        padding: 1rem !important;
+    }
+    
+    .resumen h3 {
+        font-size: 1rem !important;
+    }
+    
+    .asiento-tag {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.6rem !important;
+    }
+    
+    .btn-success {
+        font-size: 0.85rem;
+        padding: 0.5rem 1rem !important;
+    }
+}
+
+/* Tablets */
+@media (min-width: 577px) and (max-width: 768px) {
+    .seat-container {
+        padding: 1.5rem !important;
+    }
+    
+    .seat {
+        width: 40px !important;
+        height: 40px !important;
+    }
+    
+    .row-label {
+        width: 40px !important;
+    }
+}
+
+/* Animación de hover para asientos */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.05);
+    }
+}
+
+.seat:hover:not(.ocupado) {
+    animation: pulse 0.2s ease-in-out;
+}

@@ -1,0 +1,168 @@
+/* Estilos personalizados que complementan Bootstrap */
+
+.reservations-container {
+    min-height: 100vh;
+}
+
+/* Tarjeta de reserva */
+.reservation-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+    border-radius: 12px;
+}
+
+.reservation-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Header de la reserva */
+.reservation-header {
+    background: #667eea;
+}
+
+.code {
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+.date {
+    font-size: 0.8rem;
+    opacity: 0.9;
+}
+
+/* Cuerpo de la reserva */
+.reservation-body h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.reservation-body p {
+    margin-bottom: 0.25rem;
+}
+
+.total {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px dashed #dee2e6;
+}
+
+/* Estado vacío */
+.empty {
+    background: white;
+    border-radius: 12px;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+/* Móviles pequeños */
+@media (max-width: 576px) {
+    .reservations-container {
+        padding: 1rem !important;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .reservation-header {
+        flex-direction: column;
+        gap: 0.3rem;
+        text-align: center;
+    }
+    
+    .code {
+        font-size: 0.75rem;
+        word-break: break-all;
+    }
+    
+    .date {
+        font-size: 0.7rem;
+    }
+    
+    .reservation-body h3 {
+        font-size: 0.95rem;
+    }
+    
+    .reservation-body p {
+        font-size: 0.75rem;
+    }
+    
+    .total {
+        font-size: 0.85rem;
+    }
+    
+    .empty {
+        padding: 2rem 1rem !important;
+    }
+    
+    .empty p {
+        font-size: 0.9rem;
+    }
+    
+    .btn-primary {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+/* Tablets */
+@media (min-width: 577px) and (max-width: 768px) {
+    .reservations-container {
+        padding: 1.5rem !important;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .code {
+        font-size: 0.85rem;
+    }
+    
+    .reservation-body h3 {
+        font-size: 1rem;
+    }
+}
+
+/* Animación de entrada */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.reservation-card {
+    animation: slideIn 0.3s ease-out;
+}
+
+/* Para impresión */
+@media print {
+    .btn-primary,
+    .empty a {
+        display: none;
+    }
+    
+    .reservation-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+    
+    .reservation-header {
+        background: #ddd !important;
+        color: #333 !important;
+        print-color-adjust: exact;
+    }
+}

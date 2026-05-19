@@ -1,0 +1,148 @@
+/* Estilos personalizados que complementan Bootstrap */
+.admin-schedules {
+    background: white;
+    border-radius: 12px;
+    min-height: 100%;
+}
+
+/* Estilo para el select */
+.form-select {
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.form-select:hover {
+    border-color: #667eea;
+}
+
+.form-select:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+/* Móviles pequeños */
+@media (max-width: 576px) {
+    .admin-schedules {
+        padding: 1rem !important;
+    }
+    
+    .card-header h5 {
+        font-size: 1rem;
+    }
+    
+    .card-body {
+        padding: 1rem;
+    }
+    
+    .form-select {
+        width: 100% !important;
+        min-width: auto !important;
+    }
+    
+    .table td, 
+    .table th {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
+    
+    .btn-sm {
+        padding: 0.2rem 0.5rem;
+        font-size: 0.7rem;
+    }
+}
+
+/* Tablets */
+@media (min-width: 577px) and (max-width: 768px) {
+    .admin-schedules {
+        padding: 1.5rem !important;
+    }
+    
+    .table td, 
+    .table th {
+        padding: 0.6rem;
+        font-size: 0.85rem;
+    }
+    
+    .btn-sm {
+        padding: 0.25rem 0.6rem;
+        font-size: 0.75rem;
+    }
+}
+
+/* Tablets grandes y desktop */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .admin-schedules {
+        padding: 1.5rem !important;
+    }
+}
+
+/* ============================================
+   PERSONALIZACIÓN DE BOTONES
+   ============================================ */
+
+.btn-success {
+    background-color: #27ae60;
+    border-color: #27ae60;
+}
+
+.btn-success:hover {
+    background-color: #219a52;
+    border-color: #219a52;
+}
+
+.btn-danger {
+    background-color: #e74c3c;
+    border-color: #e74c3c;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+    border-color: #c0392b;
+}
+
+/* Mantener tus clases originales por compatibilidad */
+.btn-add {
+    background: #27ae60;
+    color: white;
+    border: none;
+}
+
+.btn-add:hover {
+    background: #219a52;
+}
+
+.btn-delete {
+    background: #e74c3c;
+    color: white;
+    border: none;
+}
+
+.btn-delete:hover {
+    background: #c0392b;
+}
+
+/* Estilo para alerta personalizada */
+.alert-info {
+    background-color: #e3f2fd;
+    border-color: #90caf9;
+    color: #1565c0;
+}
+
+/* Animación para tarjetas */
+.card {
+    transition: box-shadow 0.3s;
+}
+
+.card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para inputs dentro del formulario */
+.form-control:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+}

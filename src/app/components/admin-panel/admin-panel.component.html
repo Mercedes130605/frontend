@@ -1,0 +1,27 @@
+<div class="admin-container container-fluid p-0">
+    <div class="row g-0">
+        <!-- Sidebar -->
+        <div class="admin-sidebar col-12 col-md-3 col-lg-2 bg-dark text-white">
+            <div class="sticky-top pt-3 pt-md-4">
+                <h2 class="text-center mb-4">⚙️ Panel Admin</h2>
+                <nav class="nav flex-column">
+                    <a routerLink="/admin/movies" routerLinkActive="active" class="nav-link text-white">
+                        🎬 Gestionar Películas
+                    </a>
+                    <a routerLink="/admin/products" routerLinkActive="active" class="nav-link text-white">
+                        🍿 Gestionar Productos
+                    </a>
+                    <a routerLink="/admin/schedules" routerLinkActive="active" class="nav-link text-white">
+                        📅 Gestionar Horarios
+                    </a>
+                </nav>
+                <a routerLink="/movies" class="btn btn-danger w-100 mt-4">← Volver al sitio</a>
+            </div>
+        </div>
+        
+        <!-- Content -->
+        <div class="admin-content col-12 col-md-9 col-lg-10 bg-light">
+            <router-outlet />
+        </div>
+    </div>
+</div>

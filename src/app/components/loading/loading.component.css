@@ -1,0 +1,88 @@
+/* Estilos personalizados que complementan Bootstrap */
+
+/* Overlay de carga */
+.loading-overlay {
+    backdrop-filter: blur(3px);
+}
+
+/* Spinner personalizado (manteniendo tu diseño original) */
+.spinner-custom {
+    width: 50px;
+    height: 50px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Animación del spinner */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Asegurar que el texto tenga el color correcto */
+.loading-overlay p {
+    color: white;
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+/* Móviles pequeños */
+@media (max-width: 576px) {
+    .spinner-border,
+    .spinner-custom {
+        width: 40px !important;
+        height: 40px !important;
+    }
+    
+    .loading-overlay p {
+        font-size: 0.9rem;
+        margin-top: 0.8rem;
+    }
+}
+
+/* Tablets */
+@media (min-width: 577px) and (max-width: 768px) {
+    .spinner-border,
+    .spinner-custom {
+        width: 45px !important;
+        height: 45px !important;
+    }
+}
+
+/* Pantallas grandes */
+@media (min-width: 769px) {
+    .spinner-border,
+    .spinner-custom {
+        width: 60px !important;
+        height: 60px !important;
+    }
+    
+    .loading-overlay p {
+        font-size: 1.1rem;
+    }
+}
+
+/* Opcional: Efecto de entrada suave */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.loading-overlay {
+    animation: fadeIn 0.2s ease-out;
+}

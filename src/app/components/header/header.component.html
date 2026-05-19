@@ -1,0 +1,50 @@
+<nav class="navbar navbar-dark bg-dark sticky-top px-3 px-md-4 py-2">
+    <div class="container-fluid">
+        <div class="logo">
+            <a routerLink="/movies" class="navbar-brand fs-3 fw-bold text-white">🎬 CinesROMERO</a>
+        </div>
+
+        <div class="nav-links d-flex flex-wrap align-items-center gap-3">
+            <!-- BUSCADOR -->
+            <div class="search-container d-flex align-items-center gap-2">
+                @if (mostrarBuscador) {
+                    <div class="search-box position-relative">
+                        <input type="text" 
+                               [(ngModel)]="terminoBusqueda" 
+                               (keyup.enter)="buscar()" 
+                               [placeholder]="placeholderBuscador" 
+                               class="search-input form-control rounded-pill ps-3 pe-5 py-2"
+                               style="width: 250px;"
+                               autofocus>
+                        @if (terminoBusqueda) {
+                            <button (click)="limpiarBusqueda()" class="search-clear position-absolute top-50 end-0 translate-middle-y bg-transparent border-0 me-3">✕</button>
+                        }
+                        <button (click)="buscar()" class="search-submit position-absolute top-50 end-0 translate-middle-y bg-transparent border-0 me-2">🔍</button>
+                    </div>
+                }
+                <button (click)="toggleBuscador()" class="search-icon-btn btn btn-link text-white p-1" [class.text-primary]="mostrarBuscador">🔍</button>
+            </div>
+
+            <!-- CARRITO CON CONTADOR -->
+            <a routerLink="/cart" class="cart-link position-relative bg-warning rounded-pill px-3 py-1 text-dark text-decoration-none fw-semibold">
+                🛒 Carrito
+                @if (cartService.totalGeneral() > 0) {
+                    <span class="cart-badge position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        S/ {{cartService.totalGeneral()}}
+                    </span>
+                }
+            </a>
+
+            <a routerLink="/movies" routerLinkActive="active" class="nav-link text-white">Películas</a>
+            <a routerLink="/bar" routerLinkActive="active" class="nav-link text-white">🍿 Bar</a>
+            <a routerLink="/my-reservations" routerLinkActive="active" class="nav-link text-white">📋 Mis Reservas</a>
+            <a routerLink="/profile" routerLinkActive="active" class="nav-link text-white">👤 Perfil</a>
+            
+            @if (auth.esAdmin()) {
+                <a routerLink="/admin" routerLinkActive="active" class="admin-link btn btn-danger btn-sm rounded-pill px-3">⚙️ Admin</a>
+            }
+            
+            <button (click)="logout()" class="btn-logout btn btn-outline-light btn-sm rounded-pill px-3">Cerrar Sesión</button>
+        </div>
+    </div>
+</nav>

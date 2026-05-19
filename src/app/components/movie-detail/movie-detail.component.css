@@ -1,0 +1,191 @@
+/* Estilos personalizados que complementan Bootstrap */
+
+.detail-container {
+    background: #f5f5f5;
+}
+
+/* Header de la película */
+.movie-header {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+}
+
+.header-content {
+    position: relative;
+    z-index: 2;
+}
+
+.header-content h1 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Tarjetas de horarios */
+.horario-card {
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: none;
+    border-radius: 16px;
+}
+
+.horario-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+.date {
+    font-size: 0.9rem;
+    text-transform: capitalize;
+}
+
+.time {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+/* Botón seleccionar */
+.btn-select {
+    transition: all 0.3s;
+}
+
+.btn-select:hover {
+    transform: scale(1.02);
+}
+
+/* Mensaje sin horarios */
+.no-horarios p {
+    font-size: 1.1rem;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+/* Móviles pequeños */
+@media (max-width: 576px) {
+    .movie-header {
+        padding: 2rem 1rem !important;
+        min-height: 300px;
+    }
+    
+    .header-content h1 {
+        font-size: 1.8rem !important;
+    }
+    
+    .movie-meta {
+        font-size: 0.8rem;
+        gap: 0.8rem !important;
+    }
+    
+    .description {
+        font-size: 0.9rem;
+    }
+    
+    .horarios-section {
+        padding: 1.5rem !important;
+    }
+    
+    .horarios-section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .time {
+        font-size: 1.3rem !important;
+    }
+    
+    .price {
+        font-size: 1.1rem !important;
+    }
+    
+    .date {
+        font-size: 0.8rem;
+    }
+}
+
+/* Tablets */
+@media (min-width: 577px) and (max-width: 768px) {
+    .movie-header {
+        padding: 3rem 1.5rem !important;
+    }
+    
+    .header-content h1 {
+        font-size: 2rem !important;
+    }
+    
+    .description {
+        font-size: 1rem;
+    }
+    
+    .horarios-section {
+        padding: 1.5rem !important;
+    }
+    
+    .time {
+        font-size: 1.5rem !important;
+    }
+}
+
+/* Pantallas grandes */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .movie-header {
+        padding: 4rem 2rem !important;
+    }
+    
+    .header-content h1 {
+        font-size: 2.2rem !important;
+    }
+}
+
+/* Desktop grande */
+@media (min-width: 1025px) {
+    .movie-header {
+        padding: 5rem 2rem !important;
+    }
+    
+    .header-content h1 {
+        font-size: 2.8rem !important;
+    }
+    
+    .description {
+        font-size: 1.2rem;
+    }
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.horario-card {
+    animation: fadeInUp 0.4s ease-out;
+}
+
+/* Para impresión */
+@media print {
+    .movie-header {
+        background: #333 !important;
+        color: white;
+        print-color-adjust: exact;
+    }
+    
+    .btn-select,
+    .horario-card {
+        break-inside: avoid;
+    }
+}

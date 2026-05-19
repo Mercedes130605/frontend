@@ -1,0 +1,72 @@
+<footer class="footer bg-dark text-white-50 mt-auto">
+    <div class="container py-4">
+        <div class="row g-4">
+            <!-- Sección 1: CineApp -->
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="footer-section">
+                    <h3 class="text-white mb-3">🎬 CineROMERO</h3>
+                    <p>Disfruta de las mejores películas<br>y los mejores snacks.</p>
+                </div>
+            </div>
+            
+            <!-- Sección 2: Snack Bar -->
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="footer-section">
+                    <h4 class="text-white mb-3 border-start border-primary ps-3">🍿 Snack Bar</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a routerLink="/bar" class="text-white-50 text-decoration-none">Palomitas</a></li>
+                        <li class="mb-2"><a routerLink="/bar" class="text-white-50 text-decoration-none">Refrescos</a></li>
+                        <li class="mb-2"><a routerLink="/bar" class="text-white-50 text-decoration-none">Combos</a></li>
+                        <li class="mb-2"><a routerLink="/bar" class="text-white-50 text-decoration-none">Nachos</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Sección 3: Contacto -->
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="footer-section">
+                    <h4 class="text-white mb-3 border-start border-primary ps-3">📞 Contacto</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2 d-flex align-items-center gap-2 flex-wrap">
+                            📧 <a href="mailto:mercedesromeroweb@gmail.com" class="text-white-50 text-decoration-none">mercedesromeroweb&#64;gmail.com</a>
+                        </li>
+                        <li class="mb-2 d-flex align-items-center gap-2 flex-wrap">
+                            📱 <a href="tel:+34658674631" class="text-white-50 text-decoration-none">+34 658 674 631</a>
+                        </li>
+                        <li class="mb-2 d-flex align-items-center gap-2 flex-wrap">
+                            📍 Sevilla, España
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Sección 4: Redes Sociales -->
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="footer-section">
+                    <h4 class="text-white mb-3 border-start border-primary ps-3">📱 Síguenos</h4>
+                    <div class="social-links d-flex gap-3 mb-3 flex-wrap">
+                        @for (red of redesSociales; track red.nombre) {
+                            <a [href]="red.url" 
+                               target="_blank" 
+                               rel="noopener noreferrer"
+                               class="social-link d-inline-flex align-items-center justify-content-center rounded-circle text-white text-decoration-none"
+                               [style.backgroundColor]="red.color"
+                               [title]="red.nombre"
+                               style="width: 40px; height: 40px; font-size: 1.3rem; transition: transform 0.3s, opacity 0.3s; opacity: 0.9;">
+                                {{red.icono}}
+                            </a>
+                        }
+                    </div>
+                    <div class="horario mt-3 pt-2 border-top border-secondary">
+                        <p class="mb-1 text-primary fw-bold">🕐 Horario de atención:</p>
+                        <p class="mb-0 small">Lunes a Domingo: 11:00 - 23:00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer-bottom text-center py-3 border-top border-secondary">
+        <p class="mb-0 small">&copy; {{anioActual}} CineROMERO - Creado por Mercedes Romero - Todos los derechos reservados</p>
+    </div>
+</footer>

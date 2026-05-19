@@ -1,0 +1,31 @@
+<div class="reservations-container container py-4" style="max-width: 800px;">
+    <h1 class="mb-4">📋 Mis Reservas</h1>
+    
+    @if (reservas().length > 0) {
+        <div class="reservations-list">
+            @for (r of reservas(); track r.codigo_reserva) {
+                <div class="reservation-card card mb-3 border-0 shadow-sm overflow-hidden">
+                    <div class="reservation-header bg-primary text-white p-3 d-flex justify-content-between align-items-center">
+                        <span class="code font-monospace fw-bold">{{r.codigo_reserva}}</span>
+                        <span class="date small">{{r.fecha_reserva | date:'dd/MM/yyyy HH:mm'}}</span>
+                    </div>
+                    <div class="reservation-body card-body">
+                        <h3 class="card-title h5 mb-2">{{r.pelicula}}</h3>
+                        <p class="card-text text-secondary mb-1 small">
+                            Sala: {{r.sala}} | Asiento: {{r.fila}}{{r.asiento_numero}}
+                        </p>
+                        <p class="card-text text-secondary mb-2 small">
+                            Fecha: {{r.fecha}} | Hora: {{r.hora}}
+                        </p>
+                        <p class="total fw-bold text-success mb-0">Total: S/ {{r.total}}</p>
+                    </div>
+                </div>
+            }
+        </div>
+    } @else {
+        <div class="empty text-center p-4 bg-white rounded-3 shadow-sm">
+            <p class="mb-3">No tienes reservas aún</p>
+            <a routerLink="/movies" class="btn btn-primary">Ver Películas</a>
+        </div>
+    }
+</div>

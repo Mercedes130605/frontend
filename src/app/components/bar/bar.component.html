@@ -1,0 +1,40 @@
+<div class="hero-bar">
+    <h1>🍿 Snack Bar</h1>
+    <p>Disfruta de nuestros deliciosos productos mientras ves la película</p>
+</div>
+
+@if (terminoBusqueda) {
+    <div class="search-info">
+        <p>🔍 Resultados para: <strong>"{{terminoBusqueda}}"</strong> 
+           <span>({{productosFiltrados().length}} productos encontrados)</span>
+        </p>
+    </div>
+}
+
+@if (productosFiltrados().length === 0 && terminoBusqueda) {
+    <div class="no-results">
+        <p>😕 No se encontraron productos para "{{terminoBusqueda}}"</p>
+    </div>
+}
+
+<div class="productos-grid container-fluid p-3 p-md-4">
+    <div class="row g-4">
+        @for (producto of productosFiltrados(); track producto.id) {
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="producto-card card h-100 shadow-sm">
+                    <div class="producto-image d-flex align-items-center justify-content-center bg-light">
+                        <span class="emoji display-1">{{getEmoji(producto.categoria)}}</span>
+                    </div>
+                    <div class="producto-info card-body d-flex flex-column">
+                        <h3 class="card-title h5">{{producto.nombre}}</h3>
+                        <p class="card-text text-muted small">{{producto.descripcion}}</p>
+                        <div class="producto-footer mt-auto d-flex justify-content-between align-items-center">
+                            <span class="price fw-bold text-success">S/ {{producto.precio}}</span>
+                            <button (click)="agregarAlCarrito(producto)" class="btn btn-primary btn-sm">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

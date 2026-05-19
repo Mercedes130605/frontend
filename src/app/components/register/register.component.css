@@ -1,0 +1,169 @@
+/* Estilos personalizados que complementan Bootstrap */
+
+.register-card {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.logo span {
+    font-weight: bold;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Personalización de inputs */
+.form-control:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+}
+
+.form-control::placeholder {
+    color: #adb5bd;
+    font-size: 0.9rem;
+}
+
+/* Personalización del botón primario */
+.btn-primary {
+    background-color: #667eea;
+    border-color: #667eea;
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #5a67d8;
+    border-color: #5a67d8;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* Estilo para alertas */
+.alert-danger {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+    font-size: 0.875rem;
+    border-radius: 8px;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+    font-size: 0.875rem;
+    border-radius: 8px;
+}
+
+/* Enlace de login */
+.login-link a {
+    transition: all 0.3s;
+}
+
+.login-link a:hover {
+    color: #5a67d8 !important;
+    text-decoration: underline !important;
+}
+
+/* Animación de entrada */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+/* Móviles pequeños */
+@media (max-width: 576px) {
+    .register-container {
+        padding: 1rem !important;
+    }
+    
+    .register-card {
+        padding: 1.5rem !important;
+    }
+    
+    .logo span {
+        font-size: 1.5rem;
+    }
+    
+    .form-control-lg {
+        font-size: 0.9rem;
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .btn-lg {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+    
+    .alert {
+        font-size: 0.75rem;
+        padding: 0.4rem !important;
+    }
+    
+    .login-link {
+        font-size: 0.85rem;
+        margin-top: 1rem;
+    }
+}
+
+/* Tablets */
+@media (min-width: 577px) and (max-width: 768px) {
+    .register-card {
+        padding: 2rem !important;
+    }
+    
+    .logo span {
+        font-size: 1.8rem;
+    }
+    
+    .form-control-lg {
+        font-size: 0.95rem;
+        padding: 0.6rem 0.8rem;
+    }
+}
+
+/* Para impresión */
+@media print {
+    .register-container {
+        background: white !important;
+        print-color-adjust: exact;
+    }
+    
+    .register-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+    
+    .btn-primary {
+        background: #ddd !important;
+        color: #333 !important;
+    }
+    
+    .alert {
+        display: none;
+    }
+}
+
+/* Reducir animación si el usuario lo prefiere */
+@media (prefers-reduced-motion: reduce) {
+    .register-card {
+        animation: none;
+    }
+    
+    .btn-primary:hover {
+        transform: none;
+    }
+}

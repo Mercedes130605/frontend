@@ -1,0 +1,66 @@
+<div class="seat-container container py-4" style="max-width: 1200px;">
+    <!-- Información de la película -->
+    @if (peliculaTitulo) {
+        <div class="info-pelicula bg-white rounded-3 p-3 mb-4 text-center shadow-sm">
+            <h2 class="h4 mb-2">{{peliculaTitulo}}</h2>
+            <p class="text-secondary mb-0">{{horarioFecha}} - {{horarioHora}} | Sala: {{sala}} | Precio: S/ {{precio}}</p>
+        </div>
+    }
+    
+    <!-- Pantalla -->
+    <div class="screen bg-dark text-white text-center py-3 mb-4 rounded-3 shadow-sm" style="background: #1a1a2e;">
+        <span class="fs-5">🎬 PANTALLA 🎬</span>
+    </div>
+    
+    <!-- Mapa de asientos -->
+    <div class="seats-map bg-white p-3 p-md-4 rounded-3 shadow-sm mb-4">
+        @for (row of filas; track row) {
+            <div class="row d-flex align-items-center mb-2">
+                <div class="row-label fw-bold fs-5" style="width: 45px;">{{row}}</div>
+                <div class="seats d-flex flex-wrap gap-2">
+                    @for (seat of getAsientosByRow(row); track seat.id) {
+                        <div class="seat d-flex align-items-center justify-content-center rounded-2 fw-bold"
+                             [class.ocupado]="isOcupado(seat)"
+                             [class.seleccionado]="isSeleccionado(seat)"
+                             (click)="toggleSeat(seat)"
+                             style="width: 45px; height: 45px; cursor: pointer; transition: all 0.3s; font-size: 12px;">
+                            {{seat.fila}}{{seat.numero}}
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Leyenda -->
+    <div class="legend d-flex justify-content-center gap-4 mb-4 p-3 bg-white rounded-3 shadow-sm">
+        <div class="legend-item d-flex align-items-center gap-2">
+            <div class="seat-demo rounded-2" style="width: 30px; height: 30px; background: #27ae60;"></div>
+            <span>Libre</span>
+        </div>
+        <div class="legend-item d-flex align-items-center gap-2">
+            <div class="seat-demo rounded-2" style="width: 30px; height: 30px; background: #f39c12;"></div>
+            <span>Seleccionado</span>
+        </div>
+        <div class="legend-item d-flex align-items-center gap-2">
+            <div class="seat-demo rounded-2" style="width: 30px; height: 30px; background: #e74c3c;"></div>
+            <span>Ocupado</span>
+        </div>
+    </div>
+
+    <!-- Resumen de selección -->
+    @if (asientosSeleccionados.length > 0) {
+        <div class="resumen bg-white p-4 rounded-3 shadow-sm text-center">
+            <h3 class="h5 mb-3">Asientos seleccionados ({{asientosSeleccionados.length}})</h3>
+            <div class="seleccionados d-flex flex-wrap gap-2 justify-content-center mb-3">
+                @for (a of asientosSeleccionados; track a.id) {
+                    <span class="asiento-tag bg-warning text-white px-3 py-1 rounded-pill fw-bold small">
+                        {{a.fila}}{{a.numero}}
+                    </span>
+                }
+            </div>
+            <p class="fs-5 fw-bold text-success mb-3">Total: S/ {{asientosSeleccionados.length * precio}}</p>
+            <button (click)="agregarAlCarrito()" class="btn btn-success btn-lg rounded-pill px-4">Agregar al Carrito</button>
+        </div>
+    }
+</div>

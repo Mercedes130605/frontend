@@ -1,0 +1,45 @@
+@if (pelicula()) {
+    <div class="detail-container bg-light min-vh-100">
+        <!-- Header de la película -->
+        <div class="movie-header text-white py-5 px-3 px-md-4" 
+             [style.backgroundImage]="'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(' + pelicula()?.imagen_url + ')'"
+             style="background-size: cover; background-position: center;">
+            <div class="header-content container" style="max-width: 800px;">
+                <h1 class="display-4 fw-bold mb-3">{{pelicula()?.titulo}}</h1>
+                <div class="movie-meta d-flex flex-wrap gap-3 mb-3 text-white-50">
+                    <span class="badge bg-primary">{{pelicula()?.genero}}</span>
+                    <span>⏱️ {{pelicula()?.duracion}} min</span>
+                    <span>📅 {{pelicula()?.fecha_estreno | date:'dd/MM/yyyy'}}</span>
+                </div>
+                <p class="description lead">{{pelicula()?.descripcion}}</p>
+            </div>
+        </div>
+
+        <!-- Sección de horarios -->
+        <div class="horarios-section container py-5">
+            <h2 class="text-center mb-5">🎬 Selecciona un horario</h2>
+            
+            <div class="horarios-grid row g-4">
+                @for (horario of horarios(); track horario.id) {
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="horario-card card h-100 text-center p-3 shadow-sm cursor-pointer" 
+                             [routerLink]="['/seats', horario.id]"
+                             style="cursor: pointer; transition: transform 0.3s, box-shadow 0.3s;">
+                            <div class="date fw-bold text-dark">{{horario.fecha | date:'EEEE, dd/MM'}}</div>
+                            <div class="time display-6 fw-bold text-primary my-2">{{horario.hora}}</div>
+                            <div class="sala text-secondary">Sala: {{horario.sala}}</div>
+                            <div class="price fs-4 fw-bold text-success my-2">S/ {{horario.precio}}</div>
+                            <button class="btn-select btn btn-primary w-100 rounded-pill">Seleccionar</button>
+                        </div>
+                    </div>
+                }
+            </div>
+            
+            @if (horarios().length === 0) {
+                <div class="no-horarios text-center py-5 text-secondary">
+                    <p class="fs-5">No hay horarios disponibles para esta película</p>
+                </div>
+            }
+        </div>
+    </div>
+}

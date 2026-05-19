@@ -1,0 +1,230 @@
+.ticket-container {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Header del ticket */
+.ticket-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.logo {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.code {
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+}
+
+/* Detalles del ticket */
+.ticket-details {
+    background: #f8f9fa;
+}
+
+.detail-row {
+    transition: background 0.2s;
+}
+
+.detail-row:hover {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.label {
+    font-weight: 600;
+}
+
+/* Borde punteado */
+.border-dashed {
+    border-style: dashed !important;
+}
+
+/* QR Simulador */
+.qr-simulator {
+    background: #f0f0f0;
+}
+
+.qr-box {
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+    word-break: break-all;
+}
+
+/* Instrucciones */
+.instructions {
+    background: #f8f9fa;
+}
+
+/* Spinner personalizado */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner-custom {
+    animation: spin 1s linear infinite;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+/* Móviles pequeños */
+@media (max-width: 576px) {
+    .ticket-container {
+        padding: 1rem !important;
+    }
+    
+    .ticket {
+        max-width: 100%;
+    }
+    
+    .ticket-header {
+        padding: 1rem !important;
+    }
+    
+    .logo {
+        font-size: 1.5rem !important;
+    }
+    
+    .code {
+        font-size: 0.7rem;
+    }
+    
+    .ticket-body {
+        padding: 1rem !important;
+    }
+    
+    .success-icon {
+        font-size: 2rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    h2 {
+        font-size: 1.2rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .ticket-details,
+    .qr-simulator,
+    .instructions {
+        padding: 0.75rem !important;
+    }
+    
+    .detail-row {
+        font-size: 0.8rem;
+        padding: 0.3rem 0 !important;
+    }
+    
+    .detail-row.total .value {
+        font-size: 1rem !important;
+    }
+    
+    .qr-box {
+        font-size: 0.7rem;
+    }
+    
+    .instructions p {
+        font-size: 0.7rem;
+    }
+    
+    .ticket-footer {
+        padding: 1rem !important;
+        flex-direction: column;
+        gap: 0.5rem !important;
+    }
+    
+    .btn {
+        padding: 0.5rem !important;
+        font-size: 0.8rem;
+    }
+    
+    .ticket-error {
+        margin: 1rem;
+        padding: 1rem !important;
+    }
+    
+    .ticket-error h2 {
+        font-size: 1.1rem !important;
+    }
+    
+    .ticket-error p {
+        font-size: 0.8rem;
+    }
+}
+
+/* Tablets */
+@media (min-width: 577px) and (max-width: 768px) {
+    .ticket-container {
+        padding: 1.5rem !important;
+    }
+    
+    .ticket-header {
+        padding: 1.5rem !important;
+    }
+    
+    .logo {
+        font-size: 1.8rem !important;
+    }
+    
+    .ticket-body {
+        padding: 1.5rem !important;
+    }
+}
+
+/* Animación de entrada */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.ticket {
+    animation: fadeInUp 0.4s ease-out;
+}
+
+.ticket-error {
+    animation: fadeInUp 0.4s ease-out;
+}
+
+/* Para impresión */
+@media print {
+    .ticket-container {
+        background: white !important;
+        padding: 0 !important;
+        print-color-adjust: exact;
+    }
+    
+    .ticket {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+    
+    .btn-imprimir,
+    .btn-volver,
+    .ticket-footer a,
+    .ticket-footer button {
+        display: none;
+    }
+    
+    .ticket-footer {
+        display: none;
+    }
+    
+    .loading-container {
+        display: none;
+    }
+}
+
+/* Estilos para el spinner de Bootstrap */
+.spinner-border {
+    border-width: 4px;
+}

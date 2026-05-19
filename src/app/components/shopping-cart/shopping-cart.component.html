@@ -1,0 +1,136 @@
+<div class="cart-container container py-4" style="max-width: 1200px;">
+    <div class="cart-header d-flex flex-column flex-sm-row justify-content-between align-items-center gap-3 mb-4">
+        <h1 class="h2 mb-0">🛒 Mi Carrito</h1>
+        <a routerLink="/movies" class="btn btn-outline-secondary rounded-pill px-4">← Seguir comprando</a>
+    </div>
+
+    <div class="cart-content row g-4">
+        <div class="col-12 col-lg-8">
+            <!-- ASIENTOS SELECCIONADOS -->
+            @if (reservas().length > 0) {
+                <div class="cart-section bg-white rounded-3 p-3 mb-3 shadow-sm">
+                    <h2 class="fs-5 fw-bold pb-2 mb-3 border-bottom">🎬 Entradas de Cine</h2>
+                    @for (r of reservas(); track r.asiento_id) {
+                        <div class="cart-item d-flex flex-wrap justify-content-between align-items-center py-2 border-bottom">
+                            <div class="item-info flex-grow-1">
+                                <h3 class="fs-6 fw-semibold mb-1">{{r.pelicula}}</h3>
+                                <p class="text-secondary small mb-1">{{r.horario}} | Asiento: {{r.fila}}{{r.numero}}</p>
+                                <p class="fw-bold text-success mb-0">S/ {{r.precio}}</p>
+                            </div>
+                            <button (click)="eliminarReserva(r.asiento_id)" class="btn btn-sm btn-outline-danger rounded-circle">🗑️</button>
+                        </div>
+                    }
+                    <div class="section-total text-end fw-bold pt-2 mt-2 border-top">
+                        Subtotal Entradas: S/ {{totalReservas}}
+                    </div>
+                </div>
+            }
+
+            <!-- PRODUCTOS DEL BAR -->
+            @if (carrito().length > 0) {
+                <div class="cart-section bg-white rounded-3 p-3 mb-3 shadow-sm">
+                    <h2 class="fs-5 fw-bold pb-2 mb-3 border-bottom">🍿 Snacks y Bebidas</h2>
+                    @for (item of carrito(); track item.producto.id) {
+                        <div class="cart-item d-flex flex-wrap justify-content-between align-items-center py-2 border-bottom">
+                            <div class="item-info flex-grow-1">
+                                <h3 class="fs-6 fw-semibold mb-1">{{item.producto.nombre}}</h3>
+                                <p class="text-secondary small mb-0">S/ {{item.producto.precio}} c/u</p>
+                            </div>
+                            <div class="item-controls d-flex align-items-center gap-2">
+                                <button (click)="actualizarCantidad(item.producto.id, item.cantidad - 1)" class="btn btn-sm btn-outline-secondary rounded-circle">-</button>
+                                <span class="cantidad fw-semibold min-w-30 text-center">{{item.cantidad}}</span>
+                                <button (click)="actualizarCantidad(item.producto.id, item.cantidad + 1)" class="btn btn-sm btn-outline-secondary rounded-circle">+</button>
+                            </div>
+                            <div class="item-subtotal fw-bold text-success min-w-80 text-end">S/ {{item.subtotal}}</div>
+                            <button (click)="eliminarProducto(item.producto.id)" class="btn btn-sm btn-outline-danger rounded-circle ms-2">🗑️</button>
+                        </div>
+                    }
+                    <div class="section-total text-end fw-bold pt-2 mt-2 border-top">
+                        Subtotal Snacks: S/ {{totalPrecio}}
+                    </div>
+                </div>
+            }
+
+            <!-- CARRITO VACÍO -->
+            @if (reservas().length === 0 && carrito().length === 0) {
+                <div class="empty-cart text-center p-5 bg-white rounded-3 shadow-sm">
+                    <p class="fs-5 text-secondary mb-3">🛍️ Tu carrito está vacío</p>
+                    <div class="d-flex gap-3 justify-content-center flex-wrap">
+                        <a routerLink="/movies" class="btn btn-primary rounded-pill px-4">Ver Películas</a>
+                        <a routerLink="/bar" class="btn btn-outline-primary rounded-pill px-4">Ir al Bar</a>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- RESUMEN TOTAL -->
+        @if (reservas().length > 0 || carrito().length > 0) {
+            <div class="col-12 col-lg-4">
+                <div class="cart-summary bg-white rounded-3 p-4 shadow-sm sticky-top" style="top: 80px;">
+                    <h3 class="fs-5 fw-bold pb-2 mb-3 border-bottom">Resumen de Compra</h3>
+                    <div class="summary-row d-flex justify-content-between mb-2">
+                        <span class="text-secondary">Entradas:</span>
+                        <span class="fw-semibold">S/ {{totalReservas}}</span>
+                    </div>
+                    @if (totalPrecio > 0) {
+                        <div class="summary-row d-flex justify-content-between mb-2">
+                            <span class="text-secondary">Snacks:</span>
+                            <span class="fw-semibold">S/ {{totalPrecio}}</span>
+                        </div>
+                    }
+                    <div class="summary-row total d-flex justify-content-between pt-2 mt-2 border-top">
+                        <span class="fw-bold fs-6">Total:</span>
+                        <span class="fw-bold fs-5 text-success">S/ {{totalGeneral}}</span>
+                    </div>
+                    <button (click)="abrirModalPago()" class="btn btn-success w-100 rounded-pill py-2 mt-3 fw-semibold">Pagar</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- MODAL DE PAGO (Bootstrap Modal) -->
+@if (mostrarModalPago) {
+    <div class="modal fade show d-block" tabindex="-1" style="background: rgba(0,0,0,0.5); z-index: 1050;">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4">
+                <div class="modal-header border-0 pb-0">
+                    <h2 class="modal-title fs-4 fw-bold">💳 Método de Pago</h2>
+                    <button type="button" class="btn-close" (click)="cerrarModal()"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="metodos-pago mb-3">
+                        <label class="metodo-option d-flex align-items-center gap-3 p-3 border rounded-3 mb-2 cursor-pointer">
+                            <input type="radio" [(ngModel)]="metodoPago" value="efectivo" class="form-check-input">
+                            <span>💰 Efectivo (Pagar en taquilla)</span>
+                        </label>
+                        <label class="metodo-option d-flex align-items-center gap-3 p-3 border rounded-3 cursor-pointer">
+                            <input type="radio" [(ngModel)]="metodoPago" value="tarjeta" class="form-check-input">
+                            <span>💳 Tarjeta (Pagar con saldo)</span>
+                        </label>
+                    </div>
+
+                    @if (metodoPago === 'tarjeta') {
+                        <div class="tarjeta-info bg-light p-3 rounded-3 mb-3">
+                            <p class="mb-1"><strong>Tarjeta:</strong> **** {{tarjetaInfo?.numero_tarjeta?.slice(-4) || 'No registrada'}}</p>
+                            <p class="mb-1"><strong>Saldo disponible:</strong> S/ {{tarjetaInfo?.saldo || 0}}</p>
+                            <p class="total-pagar fs-5 fw-bold text-success mt-2 mb-0"><strong>Total a pagar:</strong> S/ {{totalGeneral}}</p>
+                            @if (errorPago) {
+                                <div class="alert alert-danger mt-2 py-1 small">{{errorPago}}</div>
+                            }
+                            <a routerLink="/profile" class="recargar-link d-block text-center mt-2 text-primary">✏️ Gestionar tarjeta y recargar saldo</a>
+                        </div>
+                    }
+                </div>
+                <div class="modal-footer border-0 pt-0">
+                    <div class="modal-buttons d-flex gap-3 w-100">
+                        <button (click)="procesarPago()" [disabled]="procesando" class="btn btn-success flex-grow-1 rounded-pill py-2">
+                            {{procesando ? 'Procesando...' : 'Confirmar Pago'}}
+                        </button>
+                        <button (click)="cerrarModal()" class="btn btn-outline-danger flex-grow-1 rounded-pill py-2">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,74 @@
+/* Estilos personalizados que complementan Bootstrap */
+
+.footer-section a {
+    transition: color 0.3s;
+}
+
+.footer-section a:hover {
+    color: #667eea !important;
+}
+
+.social-link {
+    transition: transform 0.3s, opacity 0.3s;
+    opacity: 0.9;
+}
+
+.social-link:hover {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+.horario p:first-child {
+    font-weight: bold;
+    color: #667eea;
+}
+
+/* ============================================
+   RESPONSIVE (complementario a Bootstrap)
+   ============================================ */
+
+/* Móviles pequeños */
+@media (max-width: 576px) {
+    .footer-section {
+        text-align: center;
+    }
+    
+    .footer-section h4 {
+        border-left: none !important;
+        padding-left: 0 !important;
+        text-align: center;
+    }
+    
+    .contact-list li {
+        justify-content: center;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+    
+    .horario {
+        text-align: center;
+    }
+}
+
+/* Tablets */
+@media (min-width: 577px) and (max-width: 768px) {
+    .footer-section h4 {
+        border-left: 3px solid #667eea;
+        padding-left: 0.8rem;
+    }
+}
+
+/* ============================================
+   MANTENER ESTILOS ORIGINALES DONDE SEA NECESARIO
+   ============================================ */
+
+/* Si quieres mantener colores específicos */
+.text-white-50 {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.border-primary {
+    border-color: #667eea !important;
+}

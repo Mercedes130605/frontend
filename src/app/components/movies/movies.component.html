@@ -1,0 +1,49 @@
+<!-- Hero -->
+<div class="hero bg-primary-gradient text-white text-center py-5">
+    <div class="container">
+        <h1 class="display-4 fw-bold mb-3">Bienvenido a CinesROMERO</h1>
+        <p class="lead">Disfruta de las mejores películas en la mejor calidad</p>
+    </div>
+</div>
+
+@if (terminoBusqueda) {
+    <div class="search-info bg-primary text-white text-center py-2">
+        <p class="mb-0">🔍 Resultados para: <strong>"{{terminoBusqueda}}"</strong> 
+           <span class="small opacity-75">({{peliculasFiltradas().length}} películas encontradas)</span>
+        </p>
+    </div>
+}
+
+@if (peliculasFiltradas().length === 0 && terminoBusqueda) {
+    <div class="no-results text-center p-4 bg-white mx-auto my-4 rounded-3 shadow-sm" style="max-width: 500px;">
+        <p class="fs-5 text-secondary mb-0">😕 No se encontraron películas para "{{terminoBusqueda}}"</p>
+    </div>
+}
+
+@if (peliculasFiltradas().length > 0) {
+    <div class="movies-grid container py-4">
+        <div class="row g-4">
+            @for (pelicula of peliculasFiltradas(); track pelicula.id) {
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="movie-card card h-100 border-0 shadow-sm overflow-hidden">
+                        <div class="movie-image position-relative" style="height: 400px; overflow: hidden;">
+                            <img [src]="pelicula.imagen_url || 'https://via.placeholder.com/300x450?text=Película'" 
+                                 [alt]="pelicula.titulo" 
+                                 class="w-100 h-100 object-fit-cover">
+                            <div class="movie-overlay position-absolute bottom-0 start-0 end-0 d-flex justify-content-between align-items-center p-3" 
+                                 style="background: linear-gradient(transparent, rgba(0,0,0,0.7));">
+                                <span class="duration text-white small">⏱️ {{pelicula.duracion}} min</span>
+                                <span class="genre-badge bg-primary text-white px-2 py-1 rounded-3 small">{{pelicula.genero}}</span>
+                            </div>
+                        </div>
+                        <div class="movie-info card-body d-flex flex-column">
+                            <h3 class="card-title h5 mb-2">{{pelicula.titulo}}</h3>
+                            <p class="description card-text text-secondary small flex-grow-1">{{pelicula.descripcion | slice:0:100}}...</p>
+                            <a [routerLink]="['/movie', pelicula.id]" class="btn-reservar btn btn-primary w-100 mt-2 rounded-3">Ver Horarios</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}

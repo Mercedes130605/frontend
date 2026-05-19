@@ -1,0 +1,162 @@
+/* Estilos personalizados que complementan Bootstrap */
+
+/* Tarjeta de error */
+.not-found-card {
+    animation: fadeInUp 0.5s ease-out;
+    backdrop-filter: blur(10px);
+}
+
+/* Código de error */
+.error-code {
+    font-size: 6rem;
+    font-weight: 800;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Ícono de error */
+.error-icon {
+    font-size: 4rem;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+/* Título */
+h1 {
+    font-weight: 600;
+}
+
+/* Botón personalizado */
+.btn-primary {
+    background-color: #667eea;
+    border-color: #667eea;
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #5a67d8;
+    border-color: #5a67d8;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* ============================================
+   ANIMACIONES
+   ============================================ */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.error-code {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+/* Móviles pequeños */
+@media (max-width: 576px) {
+    .not-found-card {
+        margin: 1rem;
+        padding: 1.5rem !important;
+    }
+    
+    .error-code {
+        font-size: 3.5rem !important;
+    }
+    
+    .error-icon {
+        font-size: 2.5rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    h1 {
+        font-size: 1.3rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    p {
+        font-size: 0.85rem !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .btn-primary {
+        font-size: 0.9rem !important;
+        padding: 0.5rem 1rem !important;
+    }
+}
+
+/* Tablets */
+@media (min-width: 577px) and (max-width: 768px) {
+    .not-found-card {
+        margin: 1.5rem;
+        padding: 2rem !important;
+    }
+    
+    .error-code {
+        font-size: 4.5rem !important;
+    }
+    
+    .error-icon {
+        font-size: 3rem !important;
+    }
+    
+    h1 {
+        font-size: 1.5rem !important;
+    }
+}
+
+/* Pantallas grandes */
+@media (min-width: 769px) {
+    .error-code {
+        font-size: 7rem !important;
+    }
+    
+    .error-icon {
+        font-size: 5rem !important;
+    }
+}
+
+/* Para impresión */
+@media print {
+    .not-found-container {
+        background: white !important;
+        print-color-adjust: exact;
+    }
+    
+    .not-found-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+    
+    .btn-primary {
+        display: none;
+    }
+    
+    .error-code {
+        color: #333 !important;
+    }
+}
