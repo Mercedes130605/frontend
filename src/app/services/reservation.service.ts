@@ -8,7 +8,7 @@ import { config } from '../config';
 export class ReservationService {
     private http = inject(HttpClient);
     private auth = inject(AuthService);
-    private apiUrl = 'config.apiUrl';
+    private apiUrl = config.apiUrl;
 
     crearReserva(horarioId: number, asientoId: number, total: number) {
         const reserva: ReservaRequest = {

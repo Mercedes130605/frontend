@@ -8,7 +8,7 @@ import { config } from '../config';
 export class AuthService {
     private http = inject(HttpClient);
     private router = inject(Router);
-    private apiUrl = 'config.apiUrl';
+    private apiUrl = config.apiUrl;
     private tokenKey = 'auth_token';
     
     usuarioActual = signal<Usuario | null>(null);

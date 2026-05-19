@@ -8,7 +8,7 @@ import { config } from '../config';
 export class TarjetaService {
     private http = inject(HttpClient);
     private auth = inject(AuthService);
-    private apiUrl = 'config.apiUrl';
+    private apiUrl = config.apiUrl;
 
     // Obtener tarjeta del usuario
     getTarjeta() {

@@ -8,7 +8,7 @@ import { config } from '../config';
 export class BarService {
     private http = inject(HttpClient);
     private auth = inject(AuthService);
-    private apiUrl = 'config.apiUrl';
+    private apiUrl = config.apiUrl;
 
     // Productos
     getProductos() {
